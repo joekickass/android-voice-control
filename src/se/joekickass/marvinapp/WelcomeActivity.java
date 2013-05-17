@@ -5,6 +5,10 @@ import android.app.Activity;
 import android.view.Menu;
 
 public class WelcomeActivity extends Activity {
+	
+	static {
+	    System.loadLibrary("alljoyn_java");
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
