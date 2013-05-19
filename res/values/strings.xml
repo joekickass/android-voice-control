@@ -4,5 +4,6 @@
     <string name="app_name">MarvinApp</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+	<string name="enter_message_hint">Enter message</string>
+    
 </resources>
