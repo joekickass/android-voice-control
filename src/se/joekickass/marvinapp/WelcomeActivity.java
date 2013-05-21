@@ -2,21 +2,20 @@ package se.joekickass.marvinapp;
 
 import java.util.List;
 
-import root.gast.speech.SpeechRecognizingActivity;
+import root.gast.speech.SpeechRecognizingAndSpeakingActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 
-public class WelcomeActivity extends SpeechRecognizingActivity {
+public class WelcomeActivity extends SpeechRecognizingAndSpeakingActivity {
 
 	private static final String TAG = "WelcomeActivity";
-	private TextView txt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class WelcomeActivity extends SpeechRecognizingActivity {
 				recognizeDirectly(intent);
 			}
 		});
-		txt = (TextView) findViewById(R.id.txt);
 	}
 
 	@Override
@@ -59,7 +57,8 @@ public class WelcomeActivity extends SpeechRecognizingActivity {
 	@Override
 	protected void receiveWhatWasHeard(List<String> heard, float[] confidenceScores) {
 		if (heard.contains("marvin")) {
-			txt.setText("Marvin found!!!");
+			Log.d(TAG, "Marvin found!");
+			getTts().speak("Yes?", TextToSpeech.QUEUE_FLUSH, null);
 		}
 	}
 
