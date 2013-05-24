@@ -23,7 +23,7 @@ public class WelcomeActivity extends Activity implements RecognitionListener, Te
 
 	private static final String TAG = "WelcomeActivity";
 
-	private static final long DELAY = 200;
+	private static final long DELAY = 100;
 
     private SpeechRecognizer recognizer;
     
@@ -105,10 +105,11 @@ public class WelcomeActivity extends Activity implements RecognitionListener, Te
     }
 
 	private void startListen() {
-		Log.d(TAG, "Listening!");
 		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
     	intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, "se.joekickass.marvin");
+    	intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+    	intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
         getSpeechRecognizer().startListening(intent);
 	}
 
@@ -167,7 +168,7 @@ public class WelcomeActivity extends Activity implements RecognitionListener, Te
 
 	@Override
 	public void onBeginningOfSpeech() {
-		Log.d(TAG, "onBeginningOfSpeech");
+		Log.d(TAG, "Started to listen...");
 	}
 
 	@Override
@@ -177,13 +178,15 @@ public class WelcomeActivity extends Activity implements RecognitionListener, Te
 
 	@Override
 	public void onEndOfSpeech() {
-		Log.d(TAG, "onEndOfSpeech");
+		Log.d(TAG, "Finished listening!");
 	}
 
 	@Override
 	public void onError(int error) {
 		Log.d(TAG, "Error when listening: " + error);
-		startListenDelayed();
+		if ((error == SpeechRecognizer.ERROR_NO_MATCH) || (error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT)) {
+			startListenDelayed();
+		}
 	}
 
 	@Override
@@ -198,7 +201,7 @@ public class WelcomeActivity extends Activity implements RecognitionListener, Te
 
 	@Override
 	public void onReadyForSpeech(Bundle params) {
-		Log.d(TAG, "onReadyForSpeech");
+		Log.d(TAG, "Ready to start listening...");
 	}
 
 	@Override
