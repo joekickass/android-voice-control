@@ -1,6 +1,14 @@
-package se.joekickass.marvinapp.vc.commands;
+package se.joekickass.marvinapp.repository.service.local;
+
+import se.joekickass.marvinapp.vc.commands.VoiceCommand;
 
 public class HelloMarvinCommand implements VoiceCommand {
+	
+	private String serviceId;
+	
+	public HelloMarvinCommand(String id) {
+		serviceId = id;
+	}
 
 	@Override
 	public String getLowerCaseIdentifier() {
@@ -20,5 +28,10 @@ public class HelloMarvinCommand implements VoiceCommand {
 	@Override
 	public void execute() {
 		// Do nothing
+	}
+
+	@Override
+	public String getServiceId() {
+		return serviceId;
 	}
 }

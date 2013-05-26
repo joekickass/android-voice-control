@@ -27,7 +27,7 @@ public class WelcomeActivity extends Activity implements MarvinVoiceControlCallb
 		state = new CommandState();
 		
 		mvc = MarvinVoiceControlFacade.createInstance(this, new Handler(), this);
-		registerCommandsWithVoiceControl(ServiceRepository.generateCommands());
+		registerCommandsWithVoiceControl(serviceRepository.generateCommands());
 		
 		mvc.startListen();
 	}
@@ -62,11 +62,13 @@ public class WelcomeActivity extends Activity implements MarvinVoiceControlCallb
 		}
 		
 		// Check if service is available
+		// TODO: Async call
 		if (!serviceRepository.isServiceAvailable(vc)) {
 			return;
 		}
 		
 		// Execute
+		// TODO: Async call
 		vc.execute();
 		
 		// Respond

@@ -9,4 +9,5 @@ public interface VoiceCommand {
 	public int getType();
 	public String getResponse();
 	public void execute();
+	public String getServiceId();
 }
