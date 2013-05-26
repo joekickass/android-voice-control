@@ -1,5 +1,7 @@
 package se.joekickass.marvinapp.vc.commands;
 
+import se.joekickass.marvinapp.repository.service.CommandService;
+
 public interface VoiceCommand {
 	
 	public static final int TYPE_HELLO = 10;
@@ -8,6 +10,6 @@ public interface VoiceCommand {
 	public String getLowerCaseIdentifier();
 	public int getType();
 	public String getResponse();
-	public void execute();
-	public String getServiceId();
+	public CommandService getService();
+	public String getMethodId();
 }

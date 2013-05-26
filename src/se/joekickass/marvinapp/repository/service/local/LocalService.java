@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.joekickass.marvinapp.repository.service.CommandService;
+import se.joekickass.marvinapp.repository.service.CommandServiceCallback;
 import se.joekickass.marvinapp.vc.commands.VoiceCommand;
 
 /**
@@ -16,22 +17,20 @@ import se.joekickass.marvinapp.vc.commands.VoiceCommand;
  */
 public class LocalService implements CommandService {
 	
-	private static final String ID = "Local";
-	
-	@Override
-	public String getId() {
-		return ID;
-	}
-
-	@Override
-	public boolean isAvailable() {
-		return true;
-	}
-
 	@Override
 	public List<VoiceCommand> getAvailableCommands() {
 		List<VoiceCommand> list = new ArrayList<VoiceCommand>();
-		list.add(new HelloMarvinCommand(ID));
+		list.add(new HelloMarvinCommand(this, null));
 		return list;
+	}
+	
+	@Override
+	public void checkAvailability(CommandServiceCallback callback) {
+		callback.onServiceAvailable(true);
+	}
+
+	@Override
+	public void executeMethod(CommandServiceCallback callback, String id) {
+		callback.onResult(null);
 	}
 }

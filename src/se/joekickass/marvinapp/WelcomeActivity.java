@@ -3,6 +3,8 @@ package se.joekickass.marvinapp;
 import java.util.List;
 
 import se.joekickass.marvinapp.repository.ServiceRepository;
+import se.joekickass.marvinapp.repository.service.CommandHandler;
+import se.joekickass.marvinapp.repository.service.CommandHandlerCallback;
 import se.joekickass.marvinapp.state.CommandState;
 import se.joekickass.marvinapp.vc.MarvinVoiceControlCallback;
 import se.joekickass.marvinapp.vc.MarvinVoiceControlFacade;
@@ -12,11 +14,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 
-public class WelcomeActivity extends Activity implements MarvinVoiceControlCallback {
+public class WelcomeActivity extends Activity implements MarvinVoiceControlCallback, CommandHandlerCallback {
 
 	private MarvinVoiceControlFacade mvc;
 	private CommandState state;
 	private ServiceRepository serviceRepository;
+	private CommandHandler handler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class WelcomeActivity extends Activity implements MarvinVoiceControlCallb
 
 		serviceRepository = new ServiceRepository();
 		state = new CommandState();
+		
+		handler = new CommandHandler(this);
 		
 		mvc = MarvinVoiceControlFacade.createInstance(this, new Handler(), this);
 		registerCommandsWithVoiceControl(serviceRepository.generateCommands());
@@ -61,17 +66,12 @@ public class WelcomeActivity extends Activity implements MarvinVoiceControlCallb
 			return;
 		}
 		
-		// Check if service is available
-		// TODO: Async call
-		if (!serviceRepository.isServiceAvailable(vc)) {
-			return;
-		}
-		
-		// Execute
-		// TODO: Async call
-		vc.execute();
-		
-		// Respond
+		// Handle command
+		handler.handle(vc);
+	}
+
+	@Override
+	public void onResult(VoiceCommand vc) {
 		String response = vc.getResponse();
     	mvc.speak(response);
 	}
