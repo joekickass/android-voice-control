@@ -23,9 +23,10 @@ public class MarvinVoiceControlFacade implements RecognitionListener, OnInitList
 
 	private static final long DELAY = 200;
 	
-	private static final String SUPPORTED_LANG = "en-US";
+	// Note: IETF BCP 47 language tag
+	private static final String SUPPORTED_LANG = "en-GB";
 	
-	private static final Locale SUPPORTED_LOCALE = Locale.ENGLISH;
+	private static final Locale SUPPORTED_LOCALE = Locale.UK;
 
     private SpeechRecognizer recognizer;
     

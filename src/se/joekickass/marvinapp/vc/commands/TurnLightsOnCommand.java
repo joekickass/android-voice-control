@@ -1,24 +1,24 @@
 package se.joekickass.marvinapp.vc.commands;
 
-public class HelloMarvinCommand implements VoiceCommand {
+public class TurnLightsOnCommand implements VoiceCommand {
 
 	@Override
 	public String getLowerCaseIdentifier() {
-		return "marvin";
+		return "lights on";
 	}
 
 	@Override
 	public int getType() {
-		return TYPE_HELLO;
+		return TYPE_COMMAND;
 	}
-	
+
 	@Override
 	public String getResponse() {
-		return "yes?";
+		return "Turning lights on";
 	}
 
 	@Override
 	public void execute() {
-		// Do nothing
+		
 	}
 }
