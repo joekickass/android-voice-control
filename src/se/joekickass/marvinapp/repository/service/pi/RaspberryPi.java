@@ -32,7 +32,7 @@ public class RaspberryPi implements CommandService {
 	
 	private static final String GET_STATUS = "get_status";
 
-	private String url = "http://www.vecka.nu";
+	private String url = "http://192.168.10.57:8080";
 	
 	@Override
 	public List<VoiceCommand> getAvailableCommands() {
