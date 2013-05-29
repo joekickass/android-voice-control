@@ -14,6 +14,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 
+/**
+ * Entry point of the application. Responsible for tying together the MarvinVoiceFacade with the
+ * CommandHandler.
+ * 
+ * @author otaino-2
+ *
+ */
 public class WelcomeActivity extends Activity implements MarvinVoiceControlCallback, CommandHandlerCallback {
 
 	private MarvinVoiceControlFacade mvc;

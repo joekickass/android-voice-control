@@ -31,13 +31,15 @@ public class RaspberryPi implements CommandService {
 	private static final String TAG = "RaspberryPiService";
 	
 	private static final String GET_STATUS = "get_status";
+	private static final String SHUTDOWN = "shutdown";
 
-	private String url = "http://192.168.10.57:8080";
+	private String url = "http://192.168.10.57:8080/";
 	
 	@Override
 	public List<VoiceCommand> getAvailableCommands() {
 		List<VoiceCommand> list = new ArrayList<VoiceCommand>();
 		list.add(new GetStatusCommand(this, GET_STATUS));
+		list.add(new ShutdownCommand(this, SHUTDOWN));
 		return list;
 	}
 	
@@ -75,25 +77,28 @@ public class RaspberryPi implements CommandService {
     }
 
 	@Override
-	public void executeMethod(final CommandServiceCallback callback, String id) {
-		if (id.equalsIgnoreCase(GET_STATUS)) {
-			new AsyncTask<Void, Void, String>() {
-				
-				@Override
-				protected String doInBackground(Void... params) {
-					return getPiStatus(url);
+	public void executeMethod(final CommandServiceCallback callback, final String id) {
+		new AsyncTask<Void, Void, String>() {
+			
+			@Override
+			protected String doInBackground(Void... params) {
+				if (id.equalsIgnoreCase(GET_STATUS)) {
+					return getUrl(url);
+				} else if (id.equalsIgnoreCase(SHUTDOWN)) {
+					return getUrl(url + "shutdown");
 				}
-				
-				@Override
-				protected void onPostExecute(String result) {
-					callback.onResult(result);
-				};
-				
-			}.execute();
-		}
+				return null;
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				callback.onResult(result);
+			};
+			
+		}.execute();
 	}
 	
-	private String getPiStatus(String url){
+	private String getUrl(String url){
         String results = "ERROR";
         try
         {

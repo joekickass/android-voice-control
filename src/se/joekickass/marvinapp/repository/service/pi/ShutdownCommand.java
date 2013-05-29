@@ -4,20 +4,20 @@ import se.joekickass.marvinapp.repository.service.CommandService;
 import se.joekickass.marvinapp.vc.commands.AbstractVoiceCommand;
 
 /**
- * Gets the status from the Raspberry Pi service.
+ * Shuts down the Raspberry Pi
  * 
  * @author otaino-2
  *
  */
-public class GetStatusCommand extends AbstractVoiceCommand {
+public class ShutdownCommand extends AbstractVoiceCommand {
 	
-	public GetStatusCommand(CommandService service, String methodId) {
+	public ShutdownCommand(CommandService service, String methodId) {
 		super(service, methodId);
 	}
 
 	@Override
 	public String getLowerCaseIdentifier() {
-		return "get status";
+		return "shutdown";
 	}
 
 	@Override
@@ -27,6 +27,6 @@ public class GetStatusCommand extends AbstractVoiceCommand {
 
 	@Override
 	public String getResponse() {
-		return "Status received";
+		return "Shutdown in progress";
 	}
 }

@@ -3,8 +3,8 @@ package se.joekickass.marvinapp.repository.service;
 import se.joekickass.marvinapp.vc.commands.VoiceCommand;
 
 /**
- * The CommandHandler is responsible for mapping VoiceCommand to
- * Service
+ * The CommandHandler is responsible for executing the VoiceCommand
+ * on its CommandService
  * 
  * @author otaino-2
  *

@@ -8,6 +8,13 @@ import se.joekickass.marvinapp.repository.service.local.LocalService;
 import se.joekickass.marvinapp.repository.service.pi.RaspberryPi;
 import se.joekickass.marvinapp.vc.commands.VoiceCommand;
 
+/**
+ * The ServiceRepository handles CommandServices and the VoiceCommand they
+ * support. 
+ * 
+ * @author otaino-2
+ *
+ */
 public class ServiceRepository {
 	
 	List<CommandService> services = new ArrayList<CommandService>();

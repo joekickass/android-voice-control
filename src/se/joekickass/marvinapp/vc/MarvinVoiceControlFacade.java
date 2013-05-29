@@ -17,6 +17,18 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 
+/**
+ * MarvinVoiceControlFacade abstracts away the complexity of voice recognition and
+ * text to speech from the rest of the application.
+ * 
+ * After instantiation, it is possible to register VoiceCommands with the
+ * MarvinVoiceControlFacade. The commands are used to identify spoken words
+ * as commands. When a command is identified, the application is notified through
+ * the MarvinVoiceControlCallback.
+ * 
+ * @author otaino-2
+ *
+ */
 public class MarvinVoiceControlFacade implements RecognitionListener, OnInitListener{
 
 	private static final String TAG = "MarvinVoiceControlFacade";

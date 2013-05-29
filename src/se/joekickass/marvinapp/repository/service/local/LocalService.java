@@ -8,9 +8,8 @@ import se.joekickass.marvinapp.repository.service.CommandServiceCallback;
 import se.joekickass.marvinapp.vc.commands.VoiceCommand;
 
 /**
- * Simple implementation of a service.
- * 
- * This one represents a web service running on a raspberry pi.
+ * The LocalService is used to handle the communication initiation for the
+ * HelloMarvinCommand
  * 
  * @author otaino-2
  *
