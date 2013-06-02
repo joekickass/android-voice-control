@@ -34,6 +34,7 @@ public class RaspberryPi implements CommandService {
 	
 	private static final String XBMC_PLAY = "xbmc_play";
 	private static final String XBMC_PAUSE = "xbmc_pause";
+	private static final String XBMC_OPEN = "xbmc_open";
 
 	private static final String SCHEME = "http://";
 	private static final String ADDRESS = "192.168.10.57";
@@ -44,6 +45,7 @@ public class RaspberryPi implements CommandService {
 		List<VoiceCommand> list = new ArrayList<VoiceCommand>();
 		list.add(new XbmcPlayCommand(this, XBMC_PLAY));
 		list.add(new XbmcPauseCommand(this, XBMC_PAUSE));
+		list.add(new XbmcOpenCommand(this, XBMC_OPEN));
 		return list;
 	}
 	
@@ -93,6 +95,10 @@ public class RaspberryPi implements CommandService {
 				if (id.equalsIgnoreCase(XBMC_PLAY) || id.equalsIgnoreCase(XBMC_PAUSE)) {
 					String url = SCHEME + ADDRESS + ":" + XBMC_PORT + "/jsonrpc";
 					String json = "{\"jsonrpc\": \"2.0\", \"method\": \"Player.PlayPause\", \"params\": { \"playerid\": 1 }, \"id\": 1}";
+					return httpPost(url, json);
+				} else if (id.equalsIgnoreCase(XBMC_OPEN)) {
+					String url = SCHEME + ADDRESS + ":" + XBMC_PORT + "/jsonrpc";
+					String json = "{ \"jsonrpc\": \"2.0\", \"method\": \"Player.Open\", \"params\": { \"item\": { \"movieid\": 5 } }, \"id\": 1 }";
 					return httpPost(url, json);
 				}
 				return null;
