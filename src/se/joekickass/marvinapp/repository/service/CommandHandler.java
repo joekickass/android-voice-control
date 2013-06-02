@@ -19,6 +19,11 @@ public class CommandHandler implements CommandServiceCallback {
 		this.callback = callback;
 	}
 
+	/**
+	 * Execute a VoiceCommand on the underlying CommandService
+	 * 
+	 * @param vc the VoiceCommand to execute
+	 */
 	public void handle(VoiceCommand vc) {
 		this.vc = vc;
 		vc.getService().checkAvailability(this, vc.getMethodId());
@@ -29,7 +34,7 @@ public class CommandHandler implements CommandServiceCallback {
 		if (available) {
 			vc.getService().executeMethod(this, vc.getMethodId());
 		} else {
-			// TODO: Implement me!
+			// Do nothing
 		}
 	}
 

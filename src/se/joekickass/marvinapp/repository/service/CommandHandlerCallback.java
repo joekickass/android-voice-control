@@ -10,5 +10,10 @@ import se.joekickass.marvinapp.vc.commands.VoiceCommand;
  *
  */
 public interface CommandHandlerCallback {
+	/**
+	 * The result from the executed VoiceCommand
+	 * 
+	 * @param vc the VoiceCommand that was executed
+	 */
 	public void onResult(VoiceCommand vc);
 }

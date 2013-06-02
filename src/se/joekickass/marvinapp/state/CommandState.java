@@ -26,6 +26,12 @@ public class CommandState {
 		this.state = STATE_START;
 	}
 
+	/**
+	 * Update the state machine to the next state
+	 * 
+	 * @param vc the VoiceCommand that triggered the update
+	 * @return true if successful, false otherwise
+	 */
 	public boolean updateState(VoiceCommand vc) {
 		
 		switch (vc.getType()) {

@@ -7,6 +7,14 @@ package se.joekickass.marvinapp.repository.service;
  *
  */
 public interface CommandServiceCallback {
+	/**
+	 * Returns true if the service is available
+	 * @param available true if available, false otherwise
+	 */
 	public void onServiceAvailable(boolean available);
+	/**
+	 * The result of the executed method
+	 * @param id the id of the executed method
+	 */
 	public void onResult(String id);
 }

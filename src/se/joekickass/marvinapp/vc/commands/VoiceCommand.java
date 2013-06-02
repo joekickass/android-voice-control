@@ -16,9 +16,30 @@ public interface VoiceCommand {
 	public static final int TYPE_HELLO = 10;
 	public static final int TYPE_COMMAND = 11;
 	
+	/**
+	 * Returns the string used by the voice recognizer to identify the command
+	 * @return the command identifiery in lowercase 
+	 */
 	public String getLowerCaseIdentifier();
+	/**
+	 * The type of command. Can either be HELLO or COMMAND
+	 * @return the type of the command
+	 */
 	public int getType();
+	/**
+	 * Get the string used by the TTS engine used to announce the result of the
+	 * command
+	 * @return the response string
+	 */
 	public String getResponse();
+	/**
+	 * Get the associated service that this command executes on
+	 * @return the associated service
+	 */
 	public CommandService getService();
+	/**
+	 * The string identifying a particular method on the service
+	 * @return the method id
+	 */
 	public String getMethodId();
 }
