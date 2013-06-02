@@ -19,6 +19,9 @@ public class ServiceRepository {
 	
 	List<CommandService> services = new ArrayList<CommandService>();
 	
+	/**
+	 * Creates a new ServiceRepository
+	 */
 	public ServiceRepository() {
 		LocalService local = new LocalService();
 		services.add(local);
@@ -26,6 +29,12 @@ public class ServiceRepository {
 		services.add(pi);
 	}
 
+	/**
+	 * Generate all available commands from all services handled by this
+	 * repository
+	 * 
+	 * @return a list of VoiceCommands
+	 */
 	public List<VoiceCommand> generateCommands() {
 		List<VoiceCommand> list = new ArrayList<VoiceCommand>();
 		for (CommandService service : services) {
