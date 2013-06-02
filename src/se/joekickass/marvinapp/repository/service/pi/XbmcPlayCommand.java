@@ -4,20 +4,20 @@ import se.joekickass.marvinapp.repository.service.CommandService;
 import se.joekickass.marvinapp.vc.commands.AbstractVoiceCommand;
 
 /**
- * Shuts down the Raspberry Pi
+ * Play current video in XBMC
  * 
  * @author otaino-2
  *
  */
-public class ShutdownCommand extends AbstractVoiceCommand {
+public class XbmcPlayCommand extends AbstractVoiceCommand {
 	
-	public ShutdownCommand(CommandService service, String methodId) {
+	public XbmcPlayCommand(CommandService service, String methodId) {
 		super(service, methodId);
 	}
 
 	@Override
 	public String getLowerCaseIdentifier() {
-		return "shutdown";
+		return "play";
 	}
 
 	@Override
@@ -27,6 +27,6 @@ public class ShutdownCommand extends AbstractVoiceCommand {
 
 	@Override
 	public String getResponse() {
-		return "Shutdown in progress";
+		return "Command received";
 	}
 }

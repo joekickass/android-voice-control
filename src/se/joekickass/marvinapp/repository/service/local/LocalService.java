@@ -8,8 +8,10 @@ import se.joekickass.marvinapp.repository.service.CommandServiceCallback;
 import se.joekickass.marvinapp.vc.commands.VoiceCommand;
 
 /**
- * The LocalService is used to handle the communication initiation for the
- * HelloMarvinCommand
+ * Since the HelloMarvinCommand follows the same contract as a remote service,
+ * there must be a receiving service on which the command can operate. The
+ * LocalService represents that service for the HelloMarvinCommand, and it
+ * is always available and always returns null.
  * 
  * @author otaino-2
  *
@@ -24,7 +26,7 @@ public class LocalService implements CommandService {
 	}
 	
 	@Override
-	public void checkAvailability(CommandServiceCallback callback) {
+	public void checkAvailability(CommandServiceCallback callback, String id) {
 		callback.onServiceAvailable(true);
 	}
 

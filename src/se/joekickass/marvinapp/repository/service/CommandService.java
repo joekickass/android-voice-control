@@ -15,6 +15,6 @@ import se.joekickass.marvinapp.vc.commands.VoiceCommand;
  */
 public interface CommandService {
 	public List<VoiceCommand> getAvailableCommands();
-	public void checkAvailability(CommandServiceCallback callback);
+	public void checkAvailability(CommandServiceCallback callback, String id);
 	public void executeMethod(CommandServiceCallback callback, String id);
 }

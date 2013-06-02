@@ -21,7 +21,7 @@ public class CommandHandler implements CommandServiceCallback {
 
 	public void handle(VoiceCommand vc) {
 		this.vc = vc;
-		vc.getService().checkAvailability(this);
+		vc.getService().checkAvailability(this, vc.getMethodId());
 	}
 
 	@Override

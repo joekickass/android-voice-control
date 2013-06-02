@@ -4,20 +4,20 @@ import se.joekickass.marvinapp.repository.service.CommandService;
 import se.joekickass.marvinapp.vc.commands.AbstractVoiceCommand;
 
 /**
- * Gets the status from the Raspberry Pi service.
+ * Pause current video in XBMC
  * 
  * @author otaino-2
  *
  */
-public class GetStatusCommand extends AbstractVoiceCommand {
+public class XbmcPauseCommand extends AbstractVoiceCommand {
 	
-	public GetStatusCommand(CommandService service, String methodId) {
+	public XbmcPauseCommand(CommandService service, String methodId) {
 		super(service, methodId);
 	}
 
 	@Override
 	public String getLowerCaseIdentifier() {
-		return "get status";
+		return "pause";
 	}
 
 	@Override
@@ -27,6 +27,6 @@ public class GetStatusCommand extends AbstractVoiceCommand {
 
 	@Override
 	public String getResponse() {
-		return "Status received";
+		return "Command received";
 	}
 }
